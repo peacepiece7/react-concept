@@ -3897,20 +3897,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"basic@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "basic@workspace:."
-  dependencies:
-    "@testing-library/jest-dom": ^5.14.1
-    "@testing-library/react": ^13.0.0
-    "@testing-library/user-event": ^13.2.1
-    react: ^18.2.0
-    react-dom: ^18.2.0
-    react-scripts: 5.0.1
-    web-vitals: ^2.1.0
-  languageName: unknown
-  linkType: soft
-
 "batch@npm:0.6.1":
   version: 0.6.1
   resolution: "batch@npm:0.6.1"
@@ -5281,6 +5267,20 @@ __metadata:
   checksum: 1b4cac778d64ce3b582a7e26b218afe07e207a0f9bfe13cc7395a6d307849cfe361e65033c3251e00c27dd060cab43014c2d6b2647676135e18b77d2d05b3f4f
   languageName: node
   linkType: hard
+
+"eject@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "eject@workspace:."
+  dependencies:
+    "@testing-library/jest-dom": ^5.14.1
+    "@testing-library/react": ^13.0.0
+    "@testing-library/user-event": ^13.2.1
+    react: ^18.2.0
+    react-dom: ^18.2.0
+    react-scripts: 5.0.1
+    web-vitals: ^2.1.0
+  languageName: unknown
+  linkType: soft
 
 "ejs@npm:^3.1.6":
   version: 3.1.8
