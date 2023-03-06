@@ -111,3 +111,15 @@ package manager (by facebook)
 
 - 패키지 다운로드 병렬화
 - 보안이 npm이 보다 우수
+
+## yarn berry
+
+[yarn berry 설치 과정에서 생긴 이슈 & 해결 과정 보기](https://www.notion.so/yarn-berry-c5d443ed5b274d3d9bf70381922300ec)
+
+- yarn berry 설치 안되는 문제 (.pnp\* 파일 생성이 안됨)
+- yarn.lock은 gitignore 하면 안되는 이유
+- .yarn, .pnp\* 무엇?
+
+## eject
+
+[eject시 일어난 일들](https://github.com/peacepiece7/react-concept/tree/main/eject)을 참고
