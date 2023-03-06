@@ -8,7 +8,8 @@
   box-shadow: 7px 5px 23px -9px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 7px 5px 23px -9px rgba(0, 0, 0, 0.75);
   -webkit-box-shadow: 7px 5px 23px -9px rgba(0, 0, 0, 0.75);
-  margin-bottom: 1rem;
+  margin: auto;
+  margin-bottom: 2rem;
 }
 
 .photo-cover {
@@ -35,4 +36,24 @@
   border-radius: 10px;
   padding: 0 10px;
   z-index: 1;
+}
+
+.count {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 500px;
+  height: 280px;
+  border: 1px solid black;
+  margin: 20px auto;
+}
+
+.count div {
+  font-size: 25px;
+  font-weight: 700;
+  margin: 10px;
+}
+.count button {
+  width: 50px;
+  margin: 10px;
 }

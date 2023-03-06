@@ -3,6 +3,7 @@ import "./App.css";
 
 import Profile from "./components/Profile";
 import Avator from "./components/Avator";
+import TotalCount from "./components/TotalCount";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
       <Profile title="Data Analisist" name="Judi">
         <Avator imageSrc="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1940" />
       </Profile>
+      <TotalCount></TotalCount>
     </div>
   );
 }
