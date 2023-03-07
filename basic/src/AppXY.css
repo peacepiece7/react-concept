@@ -1,0 +1,7 @@
+.mousePointer {
+  width: 10px;
+  height: 10px;
+  background-color: red;
+  border-radius: 100%;
+  transition: left 0.2 ease;
+}
