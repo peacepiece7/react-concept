@@ -7,16 +7,21 @@ import AppXY from "./AppXY"
 import AppMento from "./AppMentor"
 import AppMentors from "./AppMentors"
 import AppMentorsImmer from "./AppMentorsImmer"
+import AppTheme from "./AppTheme"
+import AppPerformanceBefore from "./AppPerformanceBefore"
+import AppPerformanceAfter from "./AppPerformanceAfter"
 
 function App() {
   return (
     <div className="App">
       <nav>
-        <a href="/">root</a>
+        <a href="/">basic</a>
         <a href="/mouseTracker">mouseTracker</a>
-        <a href="/mento">mento</a>
-        <a href="/mentors">mentors</a>
-        <a href="/mentorsImmer">mentors immer</a>
+        <a href="/mento">mento (useState)</a>
+        <a href="/mentors">mentors (useReducer)</a>
+        <a href="/mentorsImmer">mentors (immer)</a>
+        <a href="/theme">theme (useContext)</a>
+        <a href="/perfomance">mentors (performance)</a>
       </nav>
       <BrowserRouter>
         <Routes>
@@ -40,10 +45,20 @@ function App() {
               </>
             }
           ></Route>
-          <Route path="/mouseTracker" element={<AppXY />}></Route>
-          <Route path="/mento" element={<AppMento />}></Route>
-          <Route path="/mentors" element={<AppMentors />}></Route>
-          <Route path="/mentorsImmer" element={<AppMentorsImmer></AppMentorsImmer>}></Route>
+          <Route path="/mouseTracker" element={<AppXY />} />
+          <Route path="/mento" element={<AppMento />} />
+          <Route path="/mentors" element={<AppMentors />} />
+          <Route path="/mentorsImmer" element={<AppMentorsImmer />} />
+          <Route path="/theme" element={<AppTheme />} />
+          <Route
+            path="/perfomance"
+            element={
+              <>
+                <AppPerformanceBefore />
+                <AppPerformanceAfter />
+              </>
+            }
+          />
         </Routes>
       </BrowserRouter>
     </div>

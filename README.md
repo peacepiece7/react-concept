@@ -123,3 +123,14 @@ package manager (by facebook)
 ## eject
 
 [eject시 일어난 일들](https://github.com/peacepiece7/react-concept/tree/main/eject)을 참고
+
+# state management
+
+## network state managemenet tools
+
+- swc, react-query ...
+
+## global state managemenet tools
+
+- redux, mobx, immer ...
+- useContext, useReducer (react 최신 지원)
