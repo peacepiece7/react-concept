@@ -10,6 +10,8 @@ import AppMentorsImmer from "./AppMentorsImmer"
 import AppTheme from "./AppTheme"
 import AppPerformance from "./AppPerformance"
 import AppProducts from "./AppProducts"
+import AppStyledComponent from "./AppStyledComponent"
+import AppTailwind from "./AppTailwind"
 
 function App() {
   return (
@@ -23,6 +25,8 @@ function App() {
         <a href="/theme">theme (useContext)</a>
         <a href="/perfomance">mentors (performance)</a>
         <a href="/product">product (loading)</a>
+        <a href="/styledComponent">styledcomponent</a>
+        <a href="/tailwind">tailwind</a>
       </nav>
       <BrowserRouter>
         <Routes>
@@ -53,6 +57,8 @@ function App() {
           <Route path="/theme" element={<AppTheme />} />
           <Route path="/perfomance" element={<AppPerformance />} />
           <Route path="/product" element={<AppProducts />} />
+          <Route path="/styledComponent" element={<AppStyledComponent />} />
+          <Route path="/tailwind" element={<AppTailwind />} />
         </Routes>
       </BrowserRouter>
     </div>
