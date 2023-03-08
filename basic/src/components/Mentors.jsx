@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react"
+import React, { memo, useEffect, useState } from "react"
 
-const Mentors = ({ mentors, onDelete }) => {
+const Mentors = memo(({ mentors, onDelete }) => {
   const [isConveted, setIsConverted] = useState(true)
   const lazyLoading = () => {
     for (let i = 0; i < 1000000000; i++) {
@@ -24,5 +24,5 @@ const Mentors = ({ mentors, onDelete }) => {
       ))}
     </>
   )
-}
+})
 export default Mentors

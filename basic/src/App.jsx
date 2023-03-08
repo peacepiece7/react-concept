@@ -8,8 +8,8 @@ import AppMento from "./AppMentor"
 import AppMentors from "./AppMentors"
 import AppMentorsImmer from "./AppMentorsImmer"
 import AppTheme from "./AppTheme"
-import AppPerformanceBefore from "./AppPerformanceBefore"
-import AppPerformanceAfter from "./AppPerformanceAfter"
+import AppPerformance from "./AppPerformance"
+import AppProducts from "./AppProducts"
 
 function App() {
   return (
@@ -22,6 +22,7 @@ function App() {
         <a href="/mentorsImmer">mentors (immer)</a>
         <a href="/theme">theme (useContext)</a>
         <a href="/perfomance">mentors (performance)</a>
+        <a href="/product">product (loading)</a>
       </nav>
       <BrowserRouter>
         <Routes>
@@ -50,15 +51,8 @@ function App() {
           <Route path="/mentors" element={<AppMentors />} />
           <Route path="/mentorsImmer" element={<AppMentorsImmer />} />
           <Route path="/theme" element={<AppTheme />} />
-          <Route
-            path="/perfomance"
-            element={
-              <>
-                <AppPerformanceBefore />
-                <AppPerformanceAfter />
-              </>
-            }
-          />
+          <Route path="/perfomance" element={<AppPerformance />} />
+          <Route path="/product" element={<AppProducts />} />
         </Routes>
       </BrowserRouter>
     </div>
