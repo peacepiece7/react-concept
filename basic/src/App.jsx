@@ -49,7 +49,7 @@ function App() {
                 <TotalCount />
               </>
             }
-          ></Route>
+          />
           <Route path="/mouseTracker" element={<AppXY />} />
           <Route path="/mento" element={<AppMento />} />
           <Route path="/mentors" element={<AppMentors />} />
