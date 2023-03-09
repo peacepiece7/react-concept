@@ -16,7 +16,6 @@ import AppTailwind from "./AppTailwind"
 function App() {
   return (
     <div className="App">
-      <h1>test</h1>
       <nav>
         <Link to="/">basic</Link>
         <Link to="/mouseTracker">mouseTracker</Link>
