@@ -14,5 +14,7 @@ module.exports = {
     semi: 'off',
     'import/no-extraneous-dependencies': ['error', { peerDependencies: true }],
     'no-plusplus': 'off',
+    'linebreak-style': 'off',
+    'array-callback-return': 'off',
   },
 }
