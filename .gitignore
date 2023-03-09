@@ -8,9 +8,6 @@ node_modules
 .next/
 out/
 
-# production
-build
-
 # misc
 .DS_Store
 *.pem
@@ -60,8 +57,6 @@ sketch
 
 .pnp.*
 
-# production
-build
 
 # misc
 .DS_Store
