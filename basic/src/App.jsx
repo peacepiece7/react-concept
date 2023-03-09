@@ -29,7 +29,6 @@ function App() {
         <Link to="styledComponent">styledcomponent</Link>
         <Link to="tailwind">tailwind</Link>
       </nav>
-
       <Routes>
         <Route exact path="/mouseTracker" element={<AppXY />} />
         <Route exact path="/mento" element={<AppMento />} />
