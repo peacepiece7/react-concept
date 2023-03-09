@@ -16,10 +16,10 @@ import AppTailwind from "./AppTailwind"
 function App() {
   return (
     <div className="App">
+      <h1>test</h1>
       <nav>
-        <Link to="/mouseTracker">mouseTracker</Link>
         <Link to="/">basic</Link>
-        <Link to="mouseTracker">mouseTracker</Link>
+        <Link to="/mouseTracker">mouseTracker</Link>
         <Link to="mento">mento (useState)</Link>
         <Link to="mentors">mentors (useReducer)</Link>
         <Link to="mentorsImmer">mentors (immer)</Link>
