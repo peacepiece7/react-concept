@@ -12,9 +12,7 @@ import changeTextBgColor from '../utils/gradient'
 
 // props.title은 propTypes테스트 용이고 실제로는 children안에서 해결할 것
 export default function Layout({ children, today = null }) {
-  useCallback(async () => {
-    await changeTextBgColor()
-  }, [])
+  useCallback(async () => changeTextBgColor('.gradient p', 'transitionOn', 2000), [])
   // w-full (width : 100%) 지정시 진짜.. 100%로 고정됨 max-width 설정만하면  max-width + 동적사이즈 조정임
   // w-2xl처럼 확씨라게 지정해주자
 
@@ -29,7 +27,7 @@ export default function Layout({ children, today = null }) {
             <p>{today}</p>
           </div>
         </h1>
-        <article className="w-full h-full bg-white items-center">{children}</article>
+        <article className="w-full h-5/6 bg-white items-center">{children}</article>
       </div>
     </main>
   )

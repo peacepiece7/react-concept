@@ -1,0 +1,81 @@
+import React from 'react'
+
+export default function ItemList() {
+  return (
+    <div className="list w-full h-full bg-slate-500">
+      <div className="scroll-cover scroll-bar">
+        <div>e</div>
+        <div>e</div>
+        <div>e</div>
+        <div>easdsadsadsa</div>
+        <div>easdsadsadsa</div>
+        <div>easdsadsadsa</div>
+        <div>easdsadsadsa</div>
+        <div>easdsadsadsa</div>
+        <div>easdsadsadsa</div>
+        <div>easdsadsadsa</div>
+        <div>easdsadsadsa</div>
+        <div>easdsadsadsa</div>
+        <div>easdsadsadsa</div>
+        <div>e</div>
+        <div>e</div>
+        <div>e</div>
+        <div>e</div>
+        <div>e</div>
+        <div>e</div>
+        <div>e</div>
+        <div>adsadass</div>
+        <div>e</div>
+        <div>e</div>
+        <div>e</div>
+        <div>e</div>
+        <div>e</div>
+        <div>e</div>
+        <div>e</div>
+        <div>easdasdasda asd sad sad a</div>
+        <div>e</div>
+        <div>e</div>
+        <div>e</div>
+        <div>e</div>
+        <div>e</div>
+        <div>e</div>
+        <div>e</div>
+        <div>e</div>
+        <div>e</div>
+        <div>e</div>
+        <div>e</div>
+        <div>e</div>
+        <div>e</div>
+        <div>e</div>
+        <div>e</div>
+        <div>e</div>
+        <div>e</div>
+        <div>e</div>
+        <div>e</div>
+        <div>e</div>
+        <div>e</div>
+        <div>e</div>
+        <div>e</div>
+        <div>e</div>
+        <div>e</div>
+        <div>e</div>
+        <div>e</div>
+        <div>e</div>
+        <div>e</div>
+        <div>e</div>
+        <div>e</div>
+        <div>e</div>
+        <div>e</div>
+        <div>e</div>
+        <div>e</div>
+        <div>e</div>
+        <div>e</div>
+        <div>e</div>
+        <div>e</div>
+        <div>e</div>
+        <div>e</div>
+        <div>e</div>
+      </div>
+    </div>
+  )
+}

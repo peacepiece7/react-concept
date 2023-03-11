@@ -1,0 +1,47 @@
+/* * Custom scroll bar */
+.list {
+  color: #f0dede;
+  background: #2e294e;
+  padding: 5px 5px 5px 0;
+}
+.scroll-cover {
+  width: inherit;
+  height: inherit;
+  background: #2e294e;
+}
+
+.scroll-bar {
+  overflow-y: scroll;
+  border-color: rgba(0, 0, 0, 0);
+  transition: border-color 0.8s;
+}
+/* 
+https://stackoverflow.com/questions/19230289/use-transition-on-webkit-scrollbar
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+} */
+/* 아래의 모든 코드는 영역::코드로 사용 */
+.scroll-bar::-webkit-scrollbar {
+  width: 7px; /* 스크롤바의 너비 */
+}
+.scroll-bar::-webkit-scrollbar-thumb {
+  height: 17%; /* 스크롤바의 길이 */
+  border-radius: 7px;
+}
+/*스크롤바 뒷 배경 색상*/
+.scroll-bar::-webkit-scrollbar-track {
+  --tw-bg-opacity: 1;
+  background: #2e294e;
+}
+.scroll-bar:hover {
+  border-color: #f0dede;
+}
+.scroll-bar::-webkit-scrollbar,
+.scroll-bar::-webkit-scrollbar-thumb,
+.scroll-bar::-webkit-scrollbar-corner {
+  /* add border to act as background-color */
+  border-right-style: inset;
+  /* sum viewport dimensions to guarantee border will fill scrollbar */
+  border-right-width: calc(100vw + 100vh);
+  /* inherit border-color to inherit transitions */
+  border-color: inherit;
+}

@@ -32,10 +32,10 @@
 
 /* 아래 두 개는 layer components로 이동 */
 .gradient-cover:first-child p::before {
-  content: 'React To Do List';
+  content: attr(data-before);
 }
 .gradient-cover:nth-child(2) p::before {
-  content: '2023 03 09 Feb';
+  content: attr(data-before);
 }
 
 .gradient-cover p::before {
