@@ -11,6 +11,10 @@
 @layer components {
 }
 
+body {
+  background-color: rgba(24, 24, 27, 1);
+}
+
 .gradient {
   /* 뭐.. 필요한거 없나 */
 }
@@ -29,10 +33,9 @@
   -webkit-background-clip: text;
   color: transparent;
 }
-
 /* 아래 두 개는 layer components로 이동 */
 .gradient-cover:first-child p::before {
-  content: attr(data-before);
+  content: 'React To Do List';
 }
 .gradient-cover:nth-child(2) p::before {
   content: attr(data-before);

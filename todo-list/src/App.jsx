@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react'
+import changeTextBgColor from './utils/gradient'
 import './App.css'
 import Layout from './componenets/Layout'
 import ToDoList from './componenets/ToDoList'
 
+changeTextBgColor('.gradient-cover p', 'transitionOn', 2000)
 function App() {
   const [today, setToday] = useState('')
 

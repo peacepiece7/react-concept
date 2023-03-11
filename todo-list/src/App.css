@@ -1,8 +1,9 @@
 /* * Custom scroll bar */
 .list {
-  color: #f0dede;
+  color: black;
   background: #2e294e;
-  padding: 5px 5px 5px 0;
+  /* overflow-y : scroll 이라서 오른쪽 10px있음 */
+  padding: 10px 0px 10px 10px;
 }
 .scroll-cover {
   width: inherit;
@@ -44,4 +45,64 @@ https://stackoverflow.com/questions/19230289/use-transition-on-webkit-scrollbar
   border-right-width: calc(100vw + 100vh);
   /* inherit border-color to inherit transitions */
   border-color: inherit;
+}
+
+/* * Custom Chechbox */
+.check-container {
+  position: relative;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.check-container input {
+  min-height: 20px;
+  min-width: 20px;
+  cursor: pointer;
+  opacity: 0;
+  z-index: 99999;
+}
+
+.checkmark {
+  position: absolute;
+  top: 6px;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  border-radius: 3px;
+  background-color: #eee;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark::after {
+  content: '';
+  position: absolute;
+  display: none;
+}
+
+/* On mouse-over, add a grey background color */
+.check-container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.check-container input:checked ~ .checkmark {
+  background-color: #2196f3;
+}
+.check-container input:checked ~ .checkmark::after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.check-container .checkmark::after {
+  left: 6px;
+  top: 1px;
+  width: 7.5px;
+  height: 15px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
 }

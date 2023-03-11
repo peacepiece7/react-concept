@@ -9,11 +9,12 @@ const dealy = async (ms) => await new Promise((res) => setTimeout(res, ms))
  * @param {number} ms
  */
 export default async function changeTextBgColor(querySelector, toggle, ms) {
+  // console.log('querySelector, toggle, ms :', querySelector, toggle, ms)
   while (true) {
     await dealy(ms)
-    Array.from(document.querySelectorAll(querySelector)).map((e, idx) => {
-      setTimeout(() => e.classList.toggle(toggle), 500 * idx)
-    })
+    console.log('START ONE')
+    Array.from(document.querySelectorAll(querySelector)).map((e, idx) =>
+      setTimeout(() => e.classList.toggle(toggle), 500 * idx),
+    )
   }
 }
-changeTextBgColor()

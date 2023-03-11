@@ -16,5 +16,8 @@ module.exports = {
     'no-plusplus': 'off',
     'linebreak-style': 'off',
     'array-callback-return': 'off',
+    'no-underscore-dangle': 'off',
+    'no-param-reassign': 'off',
+    'max-len': ['error', { code: 120 }],
   },
 }
