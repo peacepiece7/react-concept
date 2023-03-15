@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: ['class'],
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   theme: {
     extend: {
@@ -8,16 +9,12 @@ module.exports = {
         min40: '40px',
       },
       colors: {
-        'm-blue': '#beecee',
-        'm-pink-soft': '#f0dede',
-        'm-pink-middle': '#edb9b9',
-        'm-pink-strong': '#e49a9f',
-        'l-pink-soft': '#d499b9',
-        'l-pink-middle': '#9055A2',
-        'l-pink-strong': '#2e294e',
+        'm-gd': '#5c5c5c',
+        'm-gl': '#9c9c9c',
+        'm-d': '#18181b',
+        'm-l': '#ffffff',
       },
     },
   },
-
   plugins: [],
 }

@@ -10,18 +10,24 @@ export default function ItemList({ toDoItems, onClickCheckbox, onClickDeleteBtn 
     onClickDeleteBtn(e.target.closest('div').dataset.uid)
   }
   return (
-    <div className="list w-full h-full bg-slate-500 text-xl">
+    <div className="list w-full h-full text-xl">
       <div className="scroll-cover scroll-bar">
-        {toDoItems.map((v) => (
+        {toDoItems.map((v, i) => (
           <div
-            className="flex justify-between check-container hover:bg-black/10 hover:transition-all transition-all"
+            className={`flex justify-between items-center check-container min-h-[80px]
+          hover:bg-black/10 hover:transition-all transition-all
+          ${i % 2 ? 'bg-m-gl/10' : ''}
+          `}
             data-uid={v.id}
             key={v.date}
+            style={{ overflowX: 'visible' }}
           >
-            <input type="checkbox" defaultChecked={v.completed} onClick={handleCheck} />
+            <input type="checkbox" className="ml-3" defaultChecked={v.completed} onClick={handleCheck} />
             <span className="checkmark" />
-            <p className="truncate w-4/5 text-white">{v.title}</p>
-            <button type="button" className="text-white right" onClick={handleDeleteBtn}>
+            <p className={`truncate w-full ml-4 text-black dark:text-white${v.completed ? ' completed' : ''}`}>
+              {v.title}
+            </p>
+            <button type="button" className="text-black dark:text-white mr-3" onClick={handleDeleteBtn}>
               <BsFillTrashFill />
             </button>
           </div>

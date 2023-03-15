@@ -5,7 +5,6 @@ export default function InputBar({ onSubmitForm }) {
   const [inputValue, setInputValue] = useState('')
 
   const handleInputValue = (e) => {
-    console.log(e.target.value)
     setInputValue(() => e.target.value)
   }
 
@@ -16,7 +15,7 @@ export default function InputBar({ onSubmitForm }) {
   }
 
   return (
-    <div className="flex w-full min-h-[50px] items-center text-white" style={{ backgroundColor: '#24203e' }}>
+    <div className="flex w-full min-h-[50px] items-center text-white bg-m-gl rounded-b-md">
       <form onSubmit={handleSumitForm} className="w-full pl-10 pr-10 ml-1 mr-1">
         <input
           className="w-5/6 h-[35px] rounded-l-md pl-2 text-black"
@@ -24,12 +23,7 @@ export default function InputBar({ onSubmitForm }) {
           value={inputValue}
           onChange={handleInputValue}
         />
-        <input
-          className="w-1/6 h-[35px] rounded-r-md cursor-pointer"
-          style={{ backgroundColor: '#e49a9f' }}
-          type="submit"
-          value="add"
-        />
+        <input className="w-1/6 h-[35px] rounded-r-md cursor-pointer bg-m-d" type="submit" value="add" />
       </form>
     </div>
   )

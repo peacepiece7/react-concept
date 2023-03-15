@@ -6,6 +6,7 @@ import ItemList from './ItemList'
 
 export default function ToDoList() {
   const [toDoItems, setToDoItems] = useState([])
+  const [isDarkMode, setIsDarkMode] = useState(null)
 
   const loadItemsInLocalStorage = () => {
     const _toDoItems = JSON.parse(localStorage.getItem('toDoList'))
@@ -13,10 +14,16 @@ export default function ToDoList() {
   }
 
   const writeItemsInLocalStorage = (items) => {
-    // 로컬 스토리에 씁니다.
     localStorage.setItem('toDoList', JSON.stringify(items))
-    // 상태를 변경합니다.
     setToDoItems(() => [...items])
+  }
+
+  const writeWindowColorScheme = () => {
+    if (window.matchMedia('(prefers-color-scheme: dark)').matches === true) {
+      localStorage.setItem('theme', 'true')
+    } else {
+      localStorage.setItem('theme', 'false')
+    }
   }
 
   const addItems = (text) => {
@@ -43,36 +50,58 @@ export default function ToDoList() {
     writeItemsInLocalStorage(newItems)
   }
 
-  const getToDoListByFilter = (filter) => {
+  const filterToDoItems = (filter) => {
     if (filter === 'All') {
       loadItemsInLocalStorage()
       return
     }
-    // filter작업 하기 전 localStorage에서 to do list
-    const loadToDo = JSON.parse(localStorage.getItem('toDoList'))
-    const newToDoList = []
+    const toDoItemsInLS = JSON.parse(localStorage.getItem('toDoList'))
+    const filteredToDoItems = []
     if (filter === 'Active') {
-      loadToDo.map((item) => {
-        if (!item.completed) newToDoList.push(item)
+      toDoItemsInLS.map((item) => {
+        if (!item.completed) filteredToDoItems.push(item)
       })
     } else if (filter === 'Completed') {
-      loadToDo.map((item) => {
-        if (item.completed) newToDoList.push(item)
+      toDoItemsInLS.map((item) => {
+        if (item.completed) filteredToDoItems.push(item)
       })
     }
-    setToDoItems(newToDoList)
+    setToDoItems(filteredToDoItems)
   }
   const deleteToDoItem = (uid) => {
     const newToDoItems = toDoItems.filter((item) => item.id !== uid)
     writeItemsInLocalStorage(newToDoItems)
   }
+
+  const toggleDarkMode = () => {
+    setIsDarkMode((prev) => !prev)
+  }
+
   useEffect(() => {
     loadItemsInLocalStorage()
+    // Set dark mode
+    if (localStorage.getItem('theme') === null) {
+      writeWindowColorScheme()
+    }
+    setIsDarkMode(() => {
+      if (JSON.parse(localStorage.getItem('theme')) === false) return false
+      return true
+    })
   }, [])
 
+  useEffect(() => {
+    if (isDarkMode === null) return
+    if (isDarkMode) {
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
+    localStorage.setItem('theme', isDarkMode)
+  }, [isDarkMode, setIsDarkMode])
+
   return (
-    <div className="flex flex-col h-full">
-      <Filter onFilterToDoList={getToDoListByFilter} />
+    <div className="flex flex-col h-[500px]">
+      <Filter onFilterToDoList={filterToDoItems} onClickDarkModeBtn={toggleDarkMode} />
       <ItemList toDoItems={toDoItems} onClickCheckbox={updateToDoItem} onClickDeleteBtn={deleteToDoItem} />
       <InputBar onSubmitForm={addItems} />
     </div>

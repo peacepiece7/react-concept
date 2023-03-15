@@ -5,10 +5,12 @@ import Layout from './componenets/Layout'
 import ToDoList from './componenets/ToDoList'
 
 changeTextBgColor('.gradient-cover p', 'transitionOn', 2000)
+
 function App() {
   const [today, setToday] = useState('')
 
   useEffect(() => {
+    // Load Current Date
     const date = new Date()
     const day = `${date.getFullYear()} ${date.getMonth()} ${date.getDate()} ${date.toString().slice(0, 3)}`
     Array.from(document.querySelectorAll('.gradient-cover p')).map((el, i) => {

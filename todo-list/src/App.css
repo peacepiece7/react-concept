@@ -1,17 +1,17 @@
 /* * Custom scroll bar */
 .list {
   color: black;
-  background: #2e294e;
+  overflow: auto;
   /* overflow-y : scroll 이라서 오른쪽 10px있음 */
-  padding: 10px 0px 10px 10px;
+  padding: 0px 0px 0px 10px;
 }
 .scroll-cover {
   width: inherit;
   height: inherit;
-  background: #2e294e;
 }
-
+/* 1011 1101 -> 11000 */
 .scroll-bar {
+  /* overflow-y: scroll; */
   overflow-y: scroll;
   border-color: rgba(0, 0, 0, 0);
   transition: border-color 0.8s;
@@ -30,11 +30,11 @@ https://stackoverflow.com/questions/19230289/use-transition-on-webkit-scrollbar
 }
 /*스크롤바 뒷 배경 색상*/
 .scroll-bar::-webkit-scrollbar-track {
-  --tw-bg-opacity: 1;
-  background: #2e294e;
+  /* --tw-bg-opacity: 1; */
+  background: #fff;
 }
 .scroll-bar:hover {
-  border-color: #f0dede;
+  border-color: #9c9c9c;
 }
 .scroll-bar::-webkit-scrollbar,
 .scroll-bar::-webkit-scrollbar-thumb,
@@ -55,7 +55,6 @@ https://stackoverflow.com/questions/19230289/use-transition-on-webkit-scrollbar
   -ms-user-select: none;
   user-select: none;
 }
-
 .check-container input {
   min-height: 20px;
   min-width: 20px;
@@ -63,29 +62,25 @@ https://stackoverflow.com/questions/19230289/use-transition-on-webkit-scrollbar
   opacity: 0;
   z-index: 99999;
 }
-
 .checkmark {
   position: absolute;
-  top: 6px;
-  left: 0;
+  top: 30px;
+  left: 10px;
   height: 20px;
   width: 20px;
   border-radius: 3px;
   background-color: #eee;
 }
-
 /* Create the checkmark/indicator (hidden when not checked) */
 .checkmark::after {
   content: '';
   position: absolute;
   display: none;
 }
-
 /* On mouse-over, add a grey background color */
 .check-container:hover input ~ .checkmark {
   background-color: #ccc;
 }
-
 /* When the checkbox is checked, add a blue background */
 .check-container input:checked ~ .checkmark {
   background-color: #2196f3;
@@ -105,4 +100,10 @@ https://stackoverflow.com/questions/19230289/use-transition-on-webkit-scrollbar
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
+}
+
+/* Active */
+.completed {
+  text-decoration: line-through;
+  color: grey;
 }

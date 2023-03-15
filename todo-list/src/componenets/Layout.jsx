@@ -16,8 +16,8 @@ export default function Layout({ children, today = null }) {
   // w-2xl처럼 확씨라게 지정해주자
 
   return (
-    <main className="flex justify-center h-screen ">
-      <div className="flex flex-col w-[32rem] max-w-lg h-screen max-h-2xl mx-4 py-8">
+    <main className="flex justify-center h-screen dark:bg-m-d bg-m-l">
+      <div className="flex flex-col w-[40rem] max-w-[40rem] h-screen max-h-2xl mx-4 py-8">
         <h1 className="gradient pb-8">
           <div className="gradient-cover">
             <p>React To Do List</p>
@@ -26,7 +26,7 @@ export default function Layout({ children, today = null }) {
             <p>{today}</p>
           </div>
         </h1>
-        <article className="w-full h-full max-h-[30rem] bg-white items-center mb-8">{children}</article>
+        <article className="w-full h-full max-h-[30rem] items-center mb-8">{children}</article>
       </div>
     </main>
   )
