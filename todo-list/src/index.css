@@ -38,6 +38,9 @@ body {
   -webkit-background-clip: text;
   color: transparent;
 }
+.dark .gradient-cover p {
+  background-image: linear-gradient(140deg, #fff 20%, #9c9c9c);
+}
 
 /* .dark .gradient-cover p {
   background-image: linear-gradient(140deg, #fff 20%, #9c9c9c);
@@ -59,18 +62,13 @@ body {
   -webkit-background-clip: text;
   color: transparent;
 }
+
+.dark .gradient-cover p::before {
+  background: linear-gradient(to right, #9c9c9c, #fff);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
 .gradient .transitionOn::before {
   opacity: 1;
 }
-
-/* 
-.dark .gradient-cover p::before {
-  background: linear-gradient(to right, #9c9c9c, #fff);
-  opacity: 0;
-  background-clip: text;
-  -webkit-background-clip: text;
-}
-.dark .gradient .transitionOn::before {
-  opacity: 1;
-  color: rgb(134, 197, 229);
-} */

@@ -10,12 +10,12 @@ export default function ItemList({ toDoItems, onClickCheckbox, onClickDeleteBtn 
     onClickDeleteBtn(e.target.closest('div').dataset.uid)
   }
   return (
-    <div className="list w-full h-full text-xl">
+    <div className="list w-full h-full text-xl ">
       <div className="scroll-cover scroll-bar">
         {toDoItems.map((v, i) => (
           <div
             className={`flex justify-between items-center check-container min-h-[80px]
-          hover:bg-black/10 hover:transition-all transition-all
+          hover:bg-black/10 dark:hover:bg-white/20 hover:transition-all transition-all mb-2
           ${i % 2 ? 'bg-m-gl/10' : ''}
           `}
             data-uid={v.id}

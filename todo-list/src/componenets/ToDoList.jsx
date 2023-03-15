@@ -5,12 +5,16 @@ import InputBar from './InputBar'
 import ItemList from './ItemList'
 
 export default function ToDoList() {
+  const [type, setType] = useState('All')
   const [toDoItems, setToDoItems] = useState([])
   const [isDarkMode, setIsDarkMode] = useState(null)
 
   const loadItemsInLocalStorage = () => {
     const _toDoItems = JSON.parse(localStorage.getItem('toDoList'))
-    if (_toDoItems) setToDoItems(_toDoItems)
+    if (_toDoItems) {
+      setToDoItems(_toDoItems)
+      setType('All')
+    }
   }
 
   const writeItemsInLocalStorage = (items) => {
@@ -38,8 +42,10 @@ export default function ToDoList() {
       completed: false,
       date: now,
     }
-    toDoItems.unshift(toDoItem)
-    writeItemsInLocalStorage(toDoItems)
+    const _toDoItems = JSON.parse(localStorage.getItem('toDoList'))
+    _toDoItems.unshift(toDoItem)
+    setType('All')
+    writeItemsInLocalStorage(_toDoItems)
   }
 
   const updateToDoItem = (uid) => {
@@ -51,6 +57,7 @@ export default function ToDoList() {
   }
 
   const filterToDoItems = (filter) => {
+    setType(filter)
     if (filter === 'All') {
       loadItemsInLocalStorage()
       return
@@ -101,7 +108,7 @@ export default function ToDoList() {
 
   return (
     <div className="flex flex-col h-[500px]">
-      <Filter onFilterToDoList={filterToDoItems} onClickDarkModeBtn={toggleDarkMode} />
+      <Filter onFilterToDoList={filterToDoItems} onClickDarkModeBtn={toggleDarkMode} type={type} />
       <ItemList toDoItems={toDoItems} onClickCheckbox={updateToDoItem} onClickDeleteBtn={deleteToDoItem} />
       <InputBar onSubmitForm={addItems} />
     </div>

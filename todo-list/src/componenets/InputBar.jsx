@@ -15,7 +15,7 @@ export default function InputBar({ onSubmitForm }) {
   }
 
   return (
-    <div className="flex w-full min-h-[50px] items-center text-white bg-m-gl rounded-b-md">
+    <div className="flex w-full min-h-[50px] items-center text-white bg-m-gl rounded-md">
       <form onSubmit={handleSumitForm} className="w-full pl-10 pr-10 ml-1 mr-1">
         <input
           className="w-5/6 h-[35px] rounded-l-md pl-2 text-black"

@@ -28,10 +28,14 @@ https://stackoverflow.com/questions/19230289/use-transition-on-webkit-scrollbar
   height: 17%; /* 스크롤바의 길이 */
   border-radius: 7px;
 }
-/*스크롤바 뒷 배경 색상*/
+/*스크롤바 뒷 배경 색상 */
 .scroll-bar::-webkit-scrollbar-track {
   /* --tw-bg-opacity: 1; */
   background: #fff;
+}
+.dark .scroll-bar::-webkit-scrollbar-track {
+  /* --tw-bg-opacity: 1; */
+  background: #18181b;
 }
 .scroll-bar:hover {
   border-color: #9c9c9c;
@@ -106,4 +110,7 @@ https://stackoverflow.com/questions/19230289/use-transition-on-webkit-scrollbar
 .completed {
   text-decoration: line-through;
   color: grey;
+}
+.dark .completed {
+  color: #5c5c5c;
 }
