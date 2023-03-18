@@ -2,12 +2,22 @@
 
 # Functions
 
-- darkmode [x]
-- item add [x]
-- item remove [x]
-- item update (active, completed) [x]
-- filter (all, active, completed) [x]
-- local storage [x]
+- darkmode [0]
+- item add [0]
+- item remove [0]
+- item update (active, completed) [0]
+- filter (all, active, completed) [0]
+- local storage [0]
+
+## 스크롤 바는 라이브러리 쓰는게 좋을 듯
+
+- 브라우저 외부에 클릭 후 browser에 마우스를 올리면 hover되지 않음 (scroll해도 scroll bar가 나오지 않음)
+- 모든 브라우저마다 호환 되는지 확인해봐야 함
+
+추가 (2023/03/18)
+
+- 더보기 (생성일 완료일 노트)
+- sticky로 생성일 날짜별 분류
 
 # skillset
 

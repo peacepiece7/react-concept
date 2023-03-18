@@ -7,7 +7,7 @@
 }
 .scroll-cover {
   width: inherit;
-  height: inherit;
+  height: 100%;
 }
 /* 1011 1101 -> 11000 */
 .scroll-bar {
@@ -54,6 +54,7 @@ https://stackoverflow.com/questions/19230289/use-transition-on-webkit-scrollbar
 /* * Custom Chechbox */
 .check-container {
   position: relative;
+  /* 글자 드래그를 막습니다. */
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;

@@ -19,5 +19,6 @@ module.exports = {
     'no-underscore-dangle': 'off',
     'no-param-reassign': 'off',
     'max-len': ['error', { code: 120 }],
+    'object-curly-newline': 'off',
   },
 }

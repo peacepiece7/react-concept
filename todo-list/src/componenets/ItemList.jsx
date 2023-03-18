@@ -2,16 +2,32 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { BsFillTrashFill } from 'react-icons/bs'
 
-export default function ItemList({ toDoItems, onClickCheckbox, onClickDeleteBtn }) {
+export default function ItemList({ toDoItems, onClickCheckbox, onClickDeleteBtn, onClickCreateDummyBtn }) {
   const handleCheck = (e) => {
     onClickCheckbox(e.target.closest('div').dataset.uid)
   }
   const handleDeleteBtn = (e) => {
     onClickDeleteBtn(e.target.closest('div').dataset.uid)
   }
+  const handleCreateDummyBtn = () => {
+    onClickCreateDummyBtn()
+  }
   return (
     <div className="list w-full h-full text-xl ">
       <div className="scroll-cover scroll-bar">
+        {toDoItems.length === 0 && (
+          <div
+            className={`flex justify-between items-center check-container min-h-[80px]
+          hover:bg-black/10 dark:hover:bg-white/20 hover:transition-all transition-all mb-2
+          `}
+            style={{ overflowX: 'visible' }}
+          >
+            해야 할 일을 추가해보세요!
+            <button type="button" onClick={handleCreateDummyBtn}>
+              더미 데이터 생성하기
+            </button>
+          </div>
+        )}
         {toDoItems.map((v, i) => (
           <div
             className={`flex justify-between items-center check-container min-h-[80px]
@@ -47,4 +63,5 @@ ItemList.propTypes = {
   ).isRequired,
   onClickCheckbox: PropTypes.func.isRequired,
   onClickDeleteBtn: PropTypes.func.isRequired,
+  onClickCreateDummyBtn: PropTypes.func.isRequired,
 }
