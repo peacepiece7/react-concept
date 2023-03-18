@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/peacepiece7/react-concept/todo-list/static/css/main.151aea69.css",
-    "main.js": "/peacepiece7/react-concept/todo-list/static/js/main.fbda4fea.js",
-    "index.html": "/peacepiece7/react-concept/todo-list/index.html",
-    "main.151aea69.css.map": "/peacepiece7/react-concept/todo-list/static/css/main.151aea69.css.map",
-    "main.fbda4fea.js.map": "/peacepiece7/react-concept/todo-list/static/js/main.fbda4fea.js.map"
+    "main.css": "/static/css/main.151aea69.css",
+    "main.js": "/static/js/main.dc8e32d8.js",
+    "index.html": "/index.html",
+    "main.151aea69.css.map": "/static/css/main.151aea69.css.map",
+    "main.dc8e32d8.js.map": "/static/js/main.dc8e32d8.js.map"
   },
   "entrypoints": [
     "static/css/main.151aea69.css",
-    "static/js/main.fbda4fea.js"
+    "static/js/main.dc8e32d8.js"
   ]
 }

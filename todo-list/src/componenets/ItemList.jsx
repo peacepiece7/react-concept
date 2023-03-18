@@ -22,8 +22,9 @@ export default function ItemList({ toDoItems, onClickCheckbox, onClickDeleteBtn,
           `}
             style={{ overflowX: 'visible' }}
           >
-            해야 할 일을 추가해보세요!
-            <button type="button" onClick={handleCreateDummyBtn}>
+            <p className="truncate w-full ml-4 text-black dark:text-white">해야 할 일을 추가해보세요!</p>
+
+            <button type="button" className="text-black dark:text-white" onClick={handleCreateDummyBtn}>
               더미 데이터 생성하기
             </button>
           </div>
