@@ -1,5 +1,9 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
+import changeTextBgColor from '../utils/gradient'
+import setTitleNow from '../utils/setTitleNow'
+
+changeTextBgColor('.gradient-cover p', 'transitionOn', 2000)
 
 /**
  * 이거 예시로 대충 넣어논은거고 propTypes참고하자
@@ -10,10 +14,13 @@ import PropTypes from 'prop-types'
  */
 
 // props.title은 propTypes테스트 용이고 실제로는 children안에서 해결할 것
-export default function Layout({ children, today = null }) {
-  // useCallback(() => changeTextBgColor('.gradient p', 'transitionOn', 2000), [])
-  // w-full (width : 100%) 지정시 진짜.. 100%로 고정됨 max-width 설정만하면  max-width + 동적사이즈 조정임
-  // w-2xl처럼 확씨라게 지정해주자
+export default function Layout({ children }) {
+  const [today, setToday] = useState('')
+
+  useEffect(() => {
+    const day = setTitleNow()
+    setToday(() => day)
+  }, [])
 
   return (
     <main className="flex justify-center h-screen dark:bg-m-d bg-m-l">
@@ -34,5 +41,4 @@ export default function Layout({ children, today = null }) {
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
-  today: PropTypes.string.isRequired,
 }

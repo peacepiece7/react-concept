@@ -13,10 +13,10 @@ export default function ItemList({ toDoItems, onClickCheckbox, onClickDeleteBtn,
     onClickCreateDummyBtn()
   }
   return (
-    <div className="list w-full h-full text-xl ">
-      <div className="scroll-cover scroll-bar">
+    <section className="list w-full h-full text-xl ">
+      <ul className="scroll-cover scroll-bar">
         {toDoItems.length === 0 && (
-          <div
+          <li
             className={`flex justify-between items-center check-container min-h-[80px]
           hover:bg-black/10 dark:hover:bg-white/20 hover:transition-all transition-all mb-2
           `}
@@ -27,10 +27,10 @@ export default function ItemList({ toDoItems, onClickCheckbox, onClickDeleteBtn,
             <button type="button" className="text-black dark:text-white" onClick={handleCreateDummyBtn}>
               더미 데이터 생성하기
             </button>
-          </div>
+          </li>
         )}
         {toDoItems.map((v, i) => (
-          <div
+          <li
             className={`flex justify-between items-center check-container min-h-[80px]
           hover:bg-black/10 dark:hover:bg-white/20 hover:transition-all transition-all mb-2
           ${i % 2 ? 'bg-m-gl/10' : ''}
@@ -47,10 +47,10 @@ export default function ItemList({ toDoItems, onClickCheckbox, onClickDeleteBtn,
             <button type="button" className="text-black dark:text-white mr-3" onClick={handleDeleteBtn}>
               <BsFillTrashFill />
             </button>
-          </div>
+          </li>
         ))}
-      </div>
-    </div>
+      </ul>
+    </section>
   )
 }
 

@@ -59,3 +59,15 @@ bulid시 eslint warning(error) ignore하기
 ## Question
 
 웹표준검사 해보장
+
+1. todoItems 컴포넌트에서 `todoItems.map((v) => <div>...긴 로직</div>)`를 `todoItems.map((v) => <Todo />)`로 변경하고 props drilling을 막기 위해 redux toolkit을 사용해보자
+2. useContext, useHook 조합 사용해보기
+
+```js
+// darkModeContext
+export const useDarkMode = () => useContext(DarkModeContext)
+// App.jsx
+return <Darkmode.Provider value={(isDarkMode, toggleDarkMode)}></Darkmode.Provider>
+```
+
+3. input, label 조합 사용해보기 (지금은 css로 커스텀 함)

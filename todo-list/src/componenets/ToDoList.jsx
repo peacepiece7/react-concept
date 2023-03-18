@@ -1,27 +1,29 @@
 import React, { useEffect, useState } from 'react'
-
+import getDummyToDos from '../utils/getDummyToDos'
 import Filter from './Filter'
 import InputBar from './InputBar'
 import ItemList from './ItemList'
 
 export default function ToDoList() {
-  const [type, setType] = useState('All')
+  const [filterType, setFilterType] = useState('All')
   const [toDoItems, setToDoItems] = useState([])
   const [isDarkMode, setIsDarkMode] = useState(null)
 
-  const loadItemsInLocalStorage = () => {
+  const getItemsInLocalStorage = () => {
     const _toDoItems = JSON.parse(localStorage.getItem('toDoList'))
     if (_toDoItems) {
       setToDoItems(_toDoItems)
-      setType('All')
+      setFilterType('All')
     }
   }
 
-  const writeItemsInLocalStorage = (items) => {
-    localStorage.setItem('toDoList', JSON.stringify(items))
-    setToDoItems(() => [...items])
+  // wirteItemsInLocalStorage -> writeToDos
+  const writeItemsInLocalStorage = (toDoItem) => {
+    localStorage.setItem('toDoList', JSON.stringify(toDoItem, ...toDoItems))
   }
 
+  // * 이거 utils로 따로 뺴도 될 듯
+  // todo "true, false" -> 'dark, light로 변경하자'
   const writeWindowColorScheme = () => {
     if (window.matchMedia('(prefers-color-scheme: dark)').matches === true) {
       localStorage.setItem('theme', 'true')
@@ -30,8 +32,8 @@ export default function ToDoList() {
     }
   }
 
-  const addItems = (text) => {
-    if (!text) {
+  const addToDos = (text) => {
+    if (text.trim().length === 0) {
       alert('한 글자 이상 입력해주세요')
       return
     }
@@ -42,14 +44,7 @@ export default function ToDoList() {
       completed: false,
       date: now,
     }
-    const _toDoItems = JSON.parse(localStorage.getItem('toDoList'))
-    if (!_toDoItems) {
-      writeItemsInLocalStorage([toDoItem])
-    } else {
-      _toDoItems.unshift(toDoItem)
-      writeItemsInLocalStorage(_toDoItems)
-    }
-    setType('All')
+    writeItemsInLocalStorage([toDoItem, ...toDoItems])
   }
 
   const updateToDoItem = (uid) => {
@@ -60,10 +55,10 @@ export default function ToDoList() {
     writeItemsInLocalStorage(newItems)
   }
 
-  const filterToDoItems = (filter) => {
-    setType(filter)
+  const setFilter = (filter) => {
+    setFilterType(filter)
     if (filter === 'All') {
-      loadItemsInLocalStorage()
+      getItemsInLocalStorage()
       return
     }
     const toDoItemsInLS = JSON.parse(localStorage.getItem('toDoList'))
@@ -88,57 +83,14 @@ export default function ToDoList() {
     setIsDarkMode((prev) => !prev)
   }
   const createDummyItems = () => {
-    const dummyItems = [
-      {
-        id: '아침 먹기-0679130234314',
-        title: '아침 먹기',
-        completed: true,
-        date: '0679130234314',
-      },
-      {
-        id: '운동하기-0679130243431',
-        title: '아침 운동하기',
-        completed: false,
-        date: '0679130243431',
-      },
-      {
-        id: '점심 먹기-0679130234315',
-        title: '점심 먹기',
-        completed: true,
-        date: '0679130234315',
-      },
-      {
-        id: '점심 운동하기-0679130234317',
-        title: '점심 운동하기',
-        completed: false,
-        date: '0679130234317',
-      },
-      {
-        id: '저녁 먹기-0679130234999',
-        title: '저녁 먹기',
-        completed: true,
-        date: '0679130234999',
-      },
-      {
-        id: '저녁 운동하기-0679130234311',
-        title: '저녁 운동하기',
-        completed: false,
-        date: '0679130234311',
-      },
-      {
-        id: '야식 먹기-0679130234390',
-        title: '야식 먹기',
-        completed: true,
-        date: '0679130234390',
-      },
-    ]
-    localStorage.setItem('toDoList', JSON.stringify(dummyItems))
+    const dummyToDos = getDummyToDos()
+    const dummyItems = localStorage.setItem('toDoList', JSON.stringify(dummyToDos))
     setToDoItems(dummyItems)
   }
 
   useEffect(() => {
-    loadItemsInLocalStorage()
-    // Set dark mode
+    getItemsInLocalStorage()
+    // Set dark mode when first time to visit this site
     if (localStorage.getItem('theme') === null) {
       writeWindowColorScheme()
     }
@@ -160,14 +112,14 @@ export default function ToDoList() {
 
   return (
     <div className="flex flex-col h-[500px]">
-      <Filter onFilterToDoList={filterToDoItems} onClickDarkModeBtn={toggleDarkMode} type={type} />
+      <Filter filterType={filterType} onFilterChange={setFilter} onClickChangeDarkMode={toggleDarkMode} />
       <ItemList
         toDoItems={toDoItems}
         onClickCheckbox={updateToDoItem}
         onClickDeleteBtn={deleteToDoItem}
         onClickCreateDummyBtn={createDummyItems}
       />
-      <InputBar onSubmitForm={addItems} />
+      <InputBar onSubmitForm={addToDos} />
     </div>
   )
 }

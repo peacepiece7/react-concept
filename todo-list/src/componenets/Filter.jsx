@@ -3,12 +3,12 @@ import PropTypes from 'prop-types'
 import { BsFillSunFill } from 'react-icons/bs'
 // BsFillSunFill BeSun
 
-export default function Filter({ onFilterToDoList, onClickDarkModeBtn, type }) {
+export default function Filter({ onFilterChange, onClickChangeDarkMode, filterType }) {
   const handleFilterBtn = (e) => {
-    onFilterToDoList(e.target.textContent)
+    onFilterChange(e.target.textContent)
   }
   const handleDarkModeBtn = () => {
-    onClickDarkModeBtn()
+    onClickChangeDarkMode()
   }
   return (
     <div
@@ -22,7 +22,7 @@ export default function Filter({ onFilterToDoList, onClickDarkModeBtn, type }) {
         <div className="pr-[10px]">
           <button
             type="button"
-            className={`${type === 'All' ? 'underline underline-offset-4 font-bold' : ''}`}
+            className={`${filterType === 'All' ? 'underline underline-offset-4 font-bold' : ''}`}
             onClick={handleFilterBtn}
           >
             All
@@ -31,7 +31,7 @@ export default function Filter({ onFilterToDoList, onClickDarkModeBtn, type }) {
         <div className="pr-[10px]">
           <button
             type="button"
-            className={`${type === 'Active' ? 'underline underline-offset-4 font-bold' : ''}`}
+            className={`${filterType === 'Active' ? 'underline underline-offset-4 font-bold' : ''}`}
             onClick={handleFilterBtn}
           >
             Active
@@ -40,7 +40,7 @@ export default function Filter({ onFilterToDoList, onClickDarkModeBtn, type }) {
         <div className="pr-[10px]">
           <button
             type="button"
-            className={`${type === 'Completed' ? 'underline underline-offset-4 font-bold' : ''}`}
+            className={`${filterType === 'Completed' ? 'underline underline-offset-4 font-bold' : ''}`}
             onClick={handleFilterBtn}
           >
             Completed
@@ -52,7 +52,7 @@ export default function Filter({ onFilterToDoList, onClickDarkModeBtn, type }) {
 }
 
 Filter.propTypes = {
-  onFilterToDoList: PropTypes.func.isRequired,
-  onClickDarkModeBtn: PropTypes.func.isRequired,
-  type: PropTypes.string.isRequired,
+  onFilterChange: PropTypes.func.isRequired,
+  onClickChangeDarkMode: PropTypes.func.isRequired,
+  filterType: PropTypes.string.isRequired,
 }
