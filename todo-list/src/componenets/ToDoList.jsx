@@ -4,32 +4,23 @@ import Filter from './Filter'
 import InputBar from './InputBar'
 import ItemList from './ItemList'
 
+function getIsDarkMode() {
+  if (localStorage.theme) return localStorage.theme === 'dark'
+  return window.matchMedia('(prefers-color-scheme: dark)').matches === true
+}
+function readToDoItems() {
+  const todos = JSON.parse(localStorage.getItem('toDoList'))
+  return todos || []
+}
+
 export default function ToDoList() {
-  const [filterType, setFilterType] = useState('All')
-  const [toDoItems, setToDoItems] = useState([])
-  const [isDarkMode, setIsDarkMode] = useState(null)
+  const [filterType, setFilterType] = useState('all')
+  const [toDoItems, setToDoItems] = useState(readToDoItems())
+  const [isDarkMode, setIsDarkMode] = useState(getIsDarkMode())
 
-  const getItemsInLocalStorage = () => {
-    const _toDoItems = JSON.parse(localStorage.getItem('toDoList'))
-    if (_toDoItems) {
-      setToDoItems(_toDoItems)
-      setFilterType('All')
-    }
-  }
-
-  // wirteItemsInLocalStorage -> writeToDos
-  const writeItemsInLocalStorage = (toDoItem) => {
-    localStorage.setItem('toDoList', JSON.stringify(toDoItem, ...toDoItems))
-  }
-
-  // * 이거 utils로 따로 뺴도 될 듯
-  // todo "true, false" -> 'dark, light로 변경하자'
-  const writeWindowColorScheme = () => {
-    if (window.matchMedia('(prefers-color-scheme: dark)').matches === true) {
-      localStorage.setItem('theme', 'true')
-    } else {
-      localStorage.setItem('theme', 'false')
-    }
+  const getFilteredTodos = (todos, filter) => {
+    if (filter === 'all') return todos
+    return todos.filter((todo) => todo.status === filter)
   }
 
   const addToDos = (text) => {
@@ -41,42 +32,28 @@ export default function ToDoList() {
     const toDoItem = {
       id: `${text}-${now}`,
       title: text,
-      completed: false,
-      date: now,
+      status: 'active',
+      date: `${now}`,
     }
-    writeItemsInLocalStorage([toDoItem, ...toDoItems])
+    setToDoItems([toDoItem, ...toDoItems])
   }
 
-  const updateToDoItem = (uid) => {
+  const updateToDoItem = (uid, status) => {
     const newItems = toDoItems.map((item) => {
-      if (item.id === uid) item.completed = !item.completed
+      if (item.id === uid) {
+        if (status === 'active') item.status = 'completed'
+        else if (status === 'completed') item.status = 'active'
+      }
       return item
     })
-    writeItemsInLocalStorage(newItems)
+    setToDoItems([...newItems])
   }
 
   const setFilter = (filter) => {
     setFilterType(filter)
-    if (filter === 'All') {
-      getItemsInLocalStorage()
-      return
-    }
-    const toDoItemsInLS = JSON.parse(localStorage.getItem('toDoList'))
-    const filteredToDoItems = []
-    if (filter === 'Active') {
-      toDoItemsInLS.map((item) => {
-        if (!item.completed) filteredToDoItems.push(item)
-      })
-    } else if (filter === 'Completed') {
-      toDoItemsInLS.map((item) => {
-        if (item.completed) filteredToDoItems.push(item)
-      })
-    }
-    setToDoItems(filteredToDoItems)
   }
   const deleteToDoItem = (uid) => {
-    const newToDoItems = toDoItems.filter((item) => item.id !== uid)
-    writeItemsInLocalStorage(newToDoItems)
+    setToDoItems([...toDoItems.filter((item) => item.id !== uid)])
   }
 
   const toggleDarkMode = () => {
@@ -84,37 +61,31 @@ export default function ToDoList() {
   }
   const createDummyItems = () => {
     const dummyToDos = getDummyToDos()
-    const dummyItems = localStorage.setItem('toDoList', JSON.stringify(dummyToDos))
-    setToDoItems(dummyItems)
+    setToDoItems([...dummyToDos])
   }
 
   useEffect(() => {
-    getItemsInLocalStorage()
-    // Set dark mode when first time to visit this site
-    if (localStorage.getItem('theme') === null) {
-      writeWindowColorScheme()
-    }
-    setIsDarkMode(() => {
-      if (JSON.parse(localStorage.getItem('theme')) === false) return false
-      return true
-    })
-  }, [])
+    localStorage.setItem('toDoList', JSON.stringify(toDoItems))
+  }, [toDoItems])
 
+  // useConText로 넘겨도 될 듯
   useEffect(() => {
-    if (isDarkMode === null) return
     if (isDarkMode) {
       document.documentElement.classList.add('dark')
+      localStorage.theme = 'dark'
     } else {
       document.documentElement.classList.remove('dark')
+      localStorage.theme = 'light'
     }
-    localStorage.setItem('theme', isDarkMode)
-  }, [isDarkMode, setIsDarkMode])
+  }, [isDarkMode])
+
+  const filteredToDoItems = getFilteredTodos(toDoItems, filterType)
 
   return (
     <div className="flex flex-col h-[500px]">
       <Filter filterType={filterType} onFilterChange={setFilter} onClickChangeDarkMode={toggleDarkMode} />
       <ItemList
-        toDoItems={toDoItems}
+        toDoItems={filteredToDoItems}
         onClickCheckbox={updateToDoItem}
         onClickDeleteBtn={deleteToDoItem}
         onClickCreateDummyBtn={createDummyItems}

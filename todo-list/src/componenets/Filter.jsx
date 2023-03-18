@@ -5,7 +5,7 @@ import { BsFillSunFill } from 'react-icons/bs'
 
 export default function Filter({ onFilterChange, onClickChangeDarkMode, filterType }) {
   const handleFilterBtn = (e) => {
-    onFilterChange(e.target.textContent)
+    onFilterChange(e.target.textContent.toLowerCase())
   }
   const handleDarkModeBtn = () => {
     onClickChangeDarkMode()
@@ -22,7 +22,7 @@ export default function Filter({ onFilterChange, onClickChangeDarkMode, filterTy
         <div className="pr-[10px]">
           <button
             type="button"
-            className={`${filterType === 'All' ? 'underline underline-offset-4 font-bold' : ''}`}
+            className={`${filterType === 'all' ? 'underline underline-offset-4 font-bold' : ''}`}
             onClick={handleFilterBtn}
           >
             All
@@ -31,7 +31,7 @@ export default function Filter({ onFilterChange, onClickChangeDarkMode, filterTy
         <div className="pr-[10px]">
           <button
             type="button"
-            className={`${filterType === 'Active' ? 'underline underline-offset-4 font-bold' : ''}`}
+            className={`${filterType === 'active' ? 'underline underline-offset-4 font-bold' : ''}`}
             onClick={handleFilterBtn}
           >
             Active
@@ -40,7 +40,7 @@ export default function Filter({ onFilterChange, onClickChangeDarkMode, filterTy
         <div className="pr-[10px]">
           <button
             type="button"
-            className={`${filterType === 'Completed' ? 'underline underline-offset-4 font-bold' : ''}`}
+            className={`${filterType === 'completed' ? 'underline underline-offset-4 font-bold' : ''}`}
             onClick={handleFilterBtn}
           >
             Completed
